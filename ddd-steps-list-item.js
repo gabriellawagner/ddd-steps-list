@@ -6,30 +6,31 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
+
 /**
- * `ddd-steps-list`
+ * `ddd-steps-list-item`
  * 
  * @demo index.html
- * @element ddd-steps-list
+ * @element ddd-steps-list-item
  */
 export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
-    return "ddd-steps-list";
+    return "ddd-steps-list-item";
   }
 
   constructor() {
     super();
-    
+    this.title = "";
     
 
     
+
+
     this.registerLocalization({
       context: this,
-      localesPath:
-        new URL("./locales/ddd-steps-list.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
+     
+        
     });
   }
 
@@ -38,6 +39,8 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+    
+
     };
   }
 
@@ -60,47 +63,29 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
       }
 
 
+
+
+
+
       
     `];
   }
-
-
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-
-    const children = Array.from(this.children);
-    children.forEach(child => {
-      if (child.tagName !== "ddd-steps-list-item") {
-        this.removeChild(child);
-      }
-    });
-
-    
-    
-   }
-   
-
-
-
-
 
   // Lit render the HTML
   render() {
     return html`
 <div class="wrapper">
-  <slot></slot>
-  <h1> should not show</h1>
+    <div class="stepLabel" ${this.stepLabel} ></div>
+    <h1>this.title</h1>
+    <slot> </slot>
+  
 </div>`;
   }
 
   /**
    * haxProperties integration via file reference
    */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
+  
 }
 
 globalThis.customElements.define(DddStepsList.tag, DddStepsList);
