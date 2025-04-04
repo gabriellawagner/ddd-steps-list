@@ -20,6 +20,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
+    this.circle=0;
     
     
 
@@ -38,6 +39,8 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      circle: { type: Number },
+      dddPrimary: { type: String, attribute: 'ddd-primary' },
     };
   }
 
@@ -59,6 +62,19 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
         font-size: var(--ddd-steps-list-label-font-size, var(--ddd-font-size-s));
       }
 
+      .circle {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-right: var(--ddd-spacing-4, 16px);
+        background-color: #ddd;
+        color: #000;
+      }
 
       
     `];
@@ -66,20 +82,40 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
 
 
 
-  updated(changedProperties) {
+  updated(changedProperties) 
+  {
     super.updated(changedProperties);
 
+
+    if (this.dddPrimary) {
+      this.style.setProperty(
+        '--ddd-theme-primary',
+        `var(--ddd-primary-${this.dddPrimary})`
+      );
+    }
+    
+
+
     const children = Array.from(this.children);
-    children.forEach(child => {
-      if (child.tagName !== "ddd-steps-list-item") {
+    let step = 1;
+
+    children.forEach(child => 
+    {
+      if (child.tagName.toLowerCase() !== "ddd-steps-list-item") 
+      {
         this.removeChild(child);
+      }
+      else 
+      {
+          child.step = step;
+          step++;
       }
     });
 
     
     
-   }
-   
+  }
+  
 
 
 
@@ -89,8 +125,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <slot></slot>
-  <h1> should not show</h1>
+    <slot></slot>
 </div>`;
   }
 

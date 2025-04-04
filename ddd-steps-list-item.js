@@ -13,7 +13,8 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @demo index.html
  * @element ddd-steps-list-item
  */
-export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
+export class DddStepsListItem extends DDDSuper(I18NMixin(LitElement)) {
+
 
   static get tag() {
     return "ddd-steps-list-item";
@@ -39,6 +40,7 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      step: { type: Number},
     
 
     };
@@ -63,7 +65,19 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
       }
 
 
-
+      .stepLabel {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: var(--ddd-spacing-2);
+  background-color: var(--ddd-theme-primary);
+  color: black;
+}
 
 
 
@@ -75,8 +89,8 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-    <div class="stepLabel" ${this.stepLabel} ></div>
-    <h1>this.title</h1>
+    <div class="stepLabel"> ${this.step}</div>
+    <h1>${this.title}</h1>
     <slot> </slot>
   
 </div>`;
@@ -88,4 +102,4 @@ export class DddStepsList extends DDDSuper(I18NMixin(LitElement)) {
   
 }
 
-globalThis.customElements.define(DddStepsList.tag, DddStepsList);
+globalThis.customElements.define(DddStepsListItem.tag, DddStepsListItem);
