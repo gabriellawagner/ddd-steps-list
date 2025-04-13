@@ -12,15 +12,15 @@
 
   <style>
     :root, html, body {
-      margin: 0;
-      padding: 0;
+      margin: var(--ddd-spacing-0);
+      padding: var(--ddd-spacing-0);
     }
     #demo {
       margin: var(--ddd-spacing-2);
     }
     ddd-steps-list {
       margin: var(--ddd-spacing-2);
-      border: var(--ddd-border-md);
+     
       border-radius: var(--ddd-radius-lg);
     }
     ddd-steps-list:hover {
@@ -31,22 +31,99 @@
       background-color: var(--ddd-accent-2);
       color: var(--ddd-primary-17);
     }
+
+    a {
+        color: var(--ddd-theme-default-beaver80);
+        text-decoration: underline !important;
+      }
+
+      .title h1 {
+        color: var(--ddd-theme-default-nittanyNavy);
+        margin-left: var(--ddd-spacing-10);
+      }
+
+      .title p {
+        margin-left: var(--ddd-spacing-10);
+      }
+
+      #demo p {
+        margin-left: var(--ddd-spacing-2);
+      }
+
+      #caption p {
+        margin-left: auto;
+        
+      }
+
+      .image img {
+       width: 100%; 
+       max-width: 800px;
+       height: 500px;
+       
+      }
+
+      #demo ul {
+        list-style-type: disc;
+        color:var(--ddd-theme-default-coalyGray);
+      }
+
+      
+      
+    
+
+
   </style>
   <title>ddd-steps-list</title>
 </head>
 
 <body>
+  <div class="title">
+    <h1>Start Planning Your Penn State Experience</h1>
+    <p>Take the next steps towards a future at Penn State Altoona. Find admission requirements, tuition and financial aid, and other information to get you ready to apply.</p>
+  
   <div id="demo">
-    <h1>ddd-steps-list</h1>
-      <ddd-steps-list ddd-primary="17">
-        <ddd-steps-list-item title="title">
+      <ddd-steps-list ddd-primary="2">
+        <ddd-steps-list-item title="Choose your enrollment period">
+          <p>You will need to complete the FAFSA each year for financial aid consideration:</p>
+          <ul>
+            <li>Summer 2024</li>
+            <li>Fall 2024/Spring 2025</li>
+          </ul>
         </ddd-steps-list-item>
-        <ddd-steps-list-item title="title">
+        <ddd-steps-list-item title="Get help">
+          <p>Utilize these resources for assistance with Federal Aid:</p>
+          <ul>
+            <li>Call the Federal Student Aid Information Center at 1-800-433-3243</li>
+            <li>Visit the Federal Student Aid (FSA) site at
+              <a href="https://studentaid.gov/"> FAFSA: Applying for Aid</a> </li>
+            <li>Follow Federal Student Aid on YouTube</li>
+          </ul>
         </ddd-steps-list-item>
-        <ddd-steps-list-item title="title">
+        <ddd-steps-list-item title="Ensure Receipt of Email">
+          <p>Ensure your email settings allow messages from these addresses:</p>
+          <ul>
+              <li><a href="mailto:osa-noreply@psu.edu">osa-noreply@psu.edu</a></li>
+              <li><a href="mailto:OSAaward@psu.edu">OSAaward@psu.edu</a></li>
+              <li><a href="mailto:FederalStudentAidFASA@cpsemail.ed.gov">FederalStudentAidFASA@cpsemail.ed.gov</a></li>
+              <li><a href="mailto:FederalStudentAidPIN@cpsemail.ed.gov">FederalStudentAidPIN@cpsemail.ed.gov</a></li>
+          </ul>
         </ddd-steps-list-item>
+        <ddd-steps-list-item title="Review Your Student Aid Report">
+          <p>After submitting the FAFSA, you'll receive a Student Aid Report (SAR) via email.</p>
+          <ul>
+            <li>Verify all information is correct and make necessary corrections through the FAFSA website.</li>
+            <li>For questions, contact the Federal Student Aid information Center at 1-800-433-3243 and provide your DRN number from the SAR.</li>
+            <li>Print the revised copy for your records.</li>
+          </ul>
+          <div class="image">
+          <img src="https://thisblankpage.com/wp-content/uploads/2024/02/kateryna-hliznitsova-JT5IUQHtL7E-unsplash.jpg" alt="The Office of Student Aid will also review your SAR and contact you if additional information is needed."/>
+        </div>
+          <p class="caption">The Office of Student Aid will also review your SAR and contact you if additional information is needed.</p>
+        </ddd-steps-list-item>
+        
     </ddd-steps-list>
   </div>
+</div>
   </details>
 </body>
 </html>
